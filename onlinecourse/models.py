@@ -95,7 +95,6 @@ class Enrollment(models.Model):
     rating = models.FloatField(default=5.0)
 
 #Question Class
-
 class Question(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     content = models.CharField(max_length=200)
@@ -119,10 +118,6 @@ class Choice(models.Model):
     content = models.CharField(max_length=200)
     is_correct = models.BooleanField(default=False)
 
-
-# One enrollment could have multiple submission
-# One submission could have multiple choices
-# One choice could belong to multiple submissions
 class Submission(models.Model):
     enrollment = models.ForeignKey(Enrollment, on_delete=models.CASCADE)
     choices = models.ManyToManyField(Choice)
